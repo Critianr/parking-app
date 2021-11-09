@@ -1,0 +1,16 @@
+div .d-flex {
+    /* height: 500px; */
+}
+div .d-flex h1{
+    /* margin: 20px 0; */
+}
+div .d-flex .list-group-item{
+    /* border-bottom: white solid 1px ;
+    background-color: #212529;
+    color: white;
+    margin: 10px 0; */
+}
+div .d-flex .list-group-item:hover{
+    /* background-color: #bebebe; */
+  
+}
