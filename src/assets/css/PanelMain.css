@@ -1,0 +1,17 @@
+.formulario{
+    display: flex;
+    padding: 40px 150px;
+    justify-content: center;
+}
+
+form{
+    /* padding: 0 250px; */
+    /* padding: 40px 150px; */
+}
+.formulario h2{
+    padding: 20px 0;
+    margin: 15px 0;
+}
+.btn .btn-success{
+    width: 100%;
+}

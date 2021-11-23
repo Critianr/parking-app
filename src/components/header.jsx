@@ -1,9 +1,9 @@
 import React from 'react';
-
+import '../assets/css/header.css'
 const Header = () =>{
     return(
       <header className="header">
-    <nav class="navbar navbar-expand navbar-dark bg-primary">
+    <nav class="navbar navbar-expand">
   <div class="container-fluid">
 
   <ul class="navbar-nav"> 

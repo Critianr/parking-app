@@ -3,13 +3,10 @@ import '../assets/css/footer.css'
 import lp from '../assets/img/lp.png'
 const Footer = () =>{
     return(
-        <footer className="footer bg-primary">
+        <footer className="footer ">
         <div className="row">
         <div class="container">
-            <div className="footer-title"> 
-            <img class="mb-1" src={lp} alt="" width="32" height="35" /> 
-            <h2>Parkingapp</h2>
-            </div>
+
   <div class="row">
     <div class="lineadiv col">
       <h4>Ubicacion</h4>

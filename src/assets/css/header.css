@@ -1,25 +1,9 @@
 .header{
-    background-color: rgb(28, 142, 255) !important;
-    background: rgb(28, 142, 255) !important;
-    color:rgb(28, 142, 255) !important;
+    background: #343a40;;
 }
-nav {
-    background: rgb(28, 142, 255) !important;
-    background-color: rgb(28, 142, 255) !important;
-    color:rgb(28, 142, 255) !important;
-}
-nav.navbar {
-    background: rgb(28, 142, 255) !important;
-    background-color: rgb(28, 142, 255) !important;
-    color:rgb(28, 142, 255) !important;
+/* nav{
+    background: #A9B660;
 }
 .navbar{
-    background: rgb(28, 142, 255) !important;
-    background-color: rgb(28, 142, 255) !important;
-    color:rgb(28, 142, 255) !important;
-}
-.navbar-light{
-    background: rgb(28, 142, 255) !important;
-    background-color: rgb(28, 142, 255) !important;
-    color:rgb(28, 142, 255) !important;
-}
+    background: #A9B660;
+} */
