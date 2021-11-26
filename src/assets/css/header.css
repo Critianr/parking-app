@@ -1,9 +1,11 @@
 .header{
-    background: #343a40;;
+    background: #3691ed;
 }
-/* nav{
-    background: #A9B660;
+.nav-item{
+
 }
-.navbar{
-    background: #A9B660;
-} */
+.fas .fa-address-book{
+    color: black;
+
+    
+}

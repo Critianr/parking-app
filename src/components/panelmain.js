@@ -5,12 +5,7 @@ import axios from "axios";
 export default class PanelMain extends Component{
   state={
     data:[],
-    infoVech: '',
-    // dataVehiculo:{
-      placa: '',
-      Puesto: '',
-      TipoVehiculo:''
-      // }
+
   };
 
   // const placa = useRef();

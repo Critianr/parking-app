@@ -1,48 +1,105 @@
 import axios from "axios";
-import React, { Component, useState, state } from "react";
+import React, { Component, useState, useEffect, state } from "react";
+import { DateTimePicker } from "@material-ui/pickers";
 
-export default class searchPlaca extends Component{
-  state = {
-    dataPlaca:[]
+export default function SearchPlaca (){
+
+  const [tickets, setTickets] = useState([]);
+  const [fechaSelecionada, setFechaSelecionada] = useState(new Date());
+  const [busqueda, setBusqueda] = useState("");
+  
+  
+const getPlaca=async()=>{
+    await axios.get("https://app58.herokuapp.com/api/tickets/placa/" + busqueda)  
+    .then(res=>{
+      setTickets(res.data);
+      console.log(res.data);
+    }).catch(error=>{
+      console.log(error);
+    })
   }
-  async componentDidMount(){
-    const res = await axios.get('https://app58.herokuapp.com/api/tickets/')
-    this.setState({dataPlaca: res.data})    
-    console.log(this.state.dataPlaca)
-  }
-  render(){
+const handleChange=e=>{
+  console.log("Busqueda: " + e.target.value)
+  setBusqueda(e.target.value);
+  
+}
+
+// const handleChangeFecha=(e)=>{
+//   console.log("fecha: " + e.target.value)
+//   // setFechaSelecionada(e.target.value)
+  
+// }
+console.log(fechaSelecionada)
+console.log(setTickets)
+
+const liquidaTiempo = async()=>{
+ let star = fechaSelecionada
+//  let end = 
+
+}
+useEffect(()=>{
+  getPlaca();
+  // finalizaTiempo();
+},[])
+
+useEffect(()=>{
+  liquidaTiempo(fechaSelecionada);
+  // finalizaTiempo();
+},[fechaSelecionada])
+  // render(){
     return(
 <div className="container">
-  <h1>Busqueda de Vehiculo</h1>
+  <h1 className="py-5 text-center">Busqueda de Vehiculo</h1>
   <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Ingrese Placa" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+  <input type="text" class="form-control" onChange={handleChange} placeholder="Busqueda por Placa" value={busqueda} />
   <div class="input-group-append">
-    <button class="btn btn-secondary" type="button">Buscar</button>
+    <button class="btn btn-secondary" onClick={getPlaca} type="button">Buscar</button>
   </div>
 </div>
+
 <div class="table table-hover table-responsive">
   <table class="table">
   <thead>
    <tr>
-   <th scope="col">Placa</th>
-    <th scope="col">Entrada</th>
-    <th scope="col">puesto</th>
-    <th scope="col">vehiculo</th>
+   <th className="col">Placa</th>
+    <th className="col">Puesto</th>
+    <th className="col">vehiculo</th>
+    <th className="col">Inicio</th>
+    <th className="col">Finalizo</th>
+
    </tr>
   </thead>
   <tbody>
-  <tr  >
-    <th>placa</th>
-    <td >tiempoInicio</td>
-    <td>ticket.Puesto</td>
-    <td>ticket.TipoVehiculo</td>
-    <td v-if="ticketeditar.valorP=true">0</td> 
-   
-     </tr>
+    {tickets &&
+    tickets.map((ticket)=>(
+    <tr key={ticket.id} > 
+     <td>{ticket.placa}</td>
+    <td>{ticket.Puesto}</td>
+    <td>{ticket.TipoVehiculo}</td>
+    <td>{ticket.tiempoInicio}</td>
+        
+    <td>
+      {/* <label>Fecha</label> */}
+      <DateTimePicker value={fechaSelecionada} onChange={setFechaSelecionada} />
+    </td>
+
+    </tr>
+    
+    ))}
+
   </tbody>
   </table>
 </div>
+<div className="container-fluid">
+  <div className="row">
+    <div className="col-10">
+    <button type="button" onClick={liquidaTiempo} class="btn btn-warning">Finalizar Tiempo</button>
+    </div>
+    <div className="col-2"><button type="button" class="btn btn-success">Valor a Pagar</button></div>
+  </div>
 </div>
+</div>
+
     )
   }
-}
+// }

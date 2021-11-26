@@ -15,11 +15,11 @@ export default function index()  {
             <Header />
             {/* <div className="container"> */}
             {/* <div className="container-fluid"> */}
-            <div class="row g-0">
-            <div class="col-10 centro">
+            <div className="row g-0">
+            <div className="col-10 centro">
             <PanelMain />
          </div>
-         <div class="col-2">
+         <div className="col-2 derecha">
              
              <Dashboar />
          {/* <PanelTickets /> */}

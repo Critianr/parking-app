@@ -3,7 +3,7 @@
     height: 500px;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    max-width: 100%;
     /* display: flex; */
 }
 .title-panel{
@@ -20,6 +20,8 @@ text-decoration: none;
 div > .d-flex .nav-item:hover{
   background: #ffff;
   color: black;
+  width: 100%;
+
 }
 /* h1 {
     justify-content: center;
