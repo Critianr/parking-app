@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { Component, useState, useEffect, state } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { DateTimePicker } from "@material-ui/pickers";
 
 export default function SearchPlaca (){
@@ -7,8 +7,8 @@ export default function SearchPlaca (){
   const [tickets, setTickets] = useState([]);
   const [fechaSelecionada, setFechaSelecionada] = useState(new Date());
   const [busqueda, setBusqueda] = useState("");
-  
-  
+  const [fechaI, setFechaI] = useState();
+  const fecha = ''
 const getPlaca=async()=>{
     await axios.get("https://app58.herokuapp.com/api/tickets/placa/" + busqueda)  
     .then(res=>{
@@ -23,29 +23,30 @@ const handleChange=e=>{
   setBusqueda(e.target.value);
   
 }
-
+// const handleChangeFecha=e=>{
+//   console.log("feberi f: " + e.target.value)
+//   setFechaI(e.target.value);
+// }
 // const handleChangeFecha=(e)=>{
 //   console.log("fecha: " + e.target.value)
 //   // setFechaSelecionada(e.target.value)
   
 // }
-console.log(fechaSelecionada)
-console.log(setTickets)
+
+
 
 const liquidaTiempo = async()=>{
  let star = fechaSelecionada
 //  let end = 
-
+console.log(star)
+console.log(tickets)
 }
 useEffect(()=>{
   getPlaca();
   // finalizaTiempo();
 },[])
 
-useEffect(()=>{
-  liquidaTiempo(fechaSelecionada);
-  // finalizaTiempo();
-},[fechaSelecionada])
+
   // render(){
     return(
 <div className="container">

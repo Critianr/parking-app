@@ -1,11 +1,11 @@
-import React, {useRef} from "react";
+import React, {Fragment, useRef} from "react";
 import logosig from '../assets/img/img-l.jfif'
 import '../assets/css/signin.css'
 import {useNavigate} from 'react-router-dom'
 import { Navigate } from "react-router-dom";
 import axios from "axios";
-import authHelper from '../../../src/helpers/auth.helper';
-import User from "../../models/user";
+import authHelper from '../helpers/auth.helper';
+import User from "../models/user";
 
 const divStyle = {
   // backgroundImage: `url(${imgMyimageexample})`,
@@ -22,7 +22,8 @@ export default function Signin(){
   const email = useRef();
   const pass = useRef();
 
-  const signIn = async () => {
+  const signIn = async (e) => {
+    e.preventDefault();
       let form = new URLSearchParams()
       form.append('email', email.current.value)
       form.append('password' , pass.current.value)
@@ -37,9 +38,12 @@ export default function Signin(){
       console.log(user)
       console.log(data)
       console.log(data.data)
-      navigate('/')
+      navigate('/index')
   }
     return(
+      !authHelper.getToken() ?
+      <Fragment>
+
       <div className="banner-inicio" style={divStyle}>
         <main class="form-signin text-center">
         {/* <div> */}
@@ -48,12 +52,12 @@ export default function Signin(){
           <h1 class="h3 mb-3 fw-normal text-white">Please sign in</h1>
       
           <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
-            <label for="floatingInput">Email address</label>
+            <input ref={email} type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
+            <label htmlFor="email" for="floatingInput">Email address</label>
           </div>
           <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
-            <label for="floatingPassword">Password</label>
+            <input ref={pass} type="password" class="form-control" id="floatingPassword" placeholder="Password" />
+            <label htmlFor="pass" for="floatingPassword">Password</label>
           </div>
       
           <div class="checkbox mb-3">
@@ -61,10 +65,13 @@ export default function Signin(){
               <input type="checkbox" value="remember-me" /> Remember me
             </label>
           </div>
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+          <button onClick={signIn} class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
           <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
         </form>
       </main>
       </div>
+      </Fragment> :
+
+      <Navigate to={'/index'} />
     );
 }

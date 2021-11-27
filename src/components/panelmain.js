@@ -1,7 +1,8 @@
-import React, {Component, useRef} from "react";
+import React, {Component, Fragment} from "react";
 import '../assets/css/PanelMain.css'
 import axios from "axios";
-
+import authHelper from '../helpers/auth.helper';
+import { Navigate } from "react-router-dom";
 export default class PanelMain extends Component{
   state={
     data:[],
@@ -19,7 +20,7 @@ export default class PanelMain extends Component{
       Puesto: this.state.Puesto,
       TipoVehiculo: this.state.TipoVehiculo,
     }
-   await axios.post(process.env.REACT_APP_API_URL+ '/nuevoticket', dataVehiculo);
+   await axios.post('https://app58.herokuapp.com/api/nuevoticket', dataVehiculo);
    console.log(dataVehiculo)
   }
   onInputChange = (e) =>{
@@ -30,6 +31,8 @@ export default class PanelMain extends Component{
   }
 render(){
     return (
+      authHelper.getToken() ?
+        <Fragment>
         <div className="container formulario">
         <form onSubmit={this.infoVehiculo} class="">
        
@@ -65,6 +68,9 @@ render(){
   <button type="submit" class="btn btn-success" >Ingresar</button>
 </form> 
  </div>
+ </Fragment>
+        :
+        <Navigate to={'/'} />
     )
   }
 }
