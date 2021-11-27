@@ -4,15 +4,23 @@ import { DateTimePicker } from "@material-ui/pickers";
 
 export default function SearchPlaca (){
 
-  const [tickets, setTickets] = useState([]);
+  const [tickets, setTickets] = useState({
+     _id: '', 
+    placa:'',
+    TipoVehiculo: '',
+    Puesto:Number,
+    valorP:Number,
+    tiempoInicio:""
+  });
+
   const [fechaSelecionada, setFechaSelecionada] = useState(new Date());
-  const [busqueda, setBusqueda] = useState("");
-  const [fechaI, setFechaI] = useState();
-  const fecha = ''
+  const [busqueda, setBusqueda] = useState('');
+  const [valor, setValor] = useState(0);
+  
 const getPlaca=async()=>{
     await axios.get("https://app58.herokuapp.com/api/tickets/placa/" + busqueda)  
     .then(res=>{
-      setTickets(res.data);
+      setTickets(res.data[0]);
       console.log(res.data);
     }).catch(error=>{
       console.log(error);
@@ -36,14 +44,24 @@ const handleChange=e=>{
 
 
 const liquidaTiempo = async()=>{
- let star = fechaSelecionada
-//  let end = 
+ let star = new Date(tickets.tiempoInicio)
+ let end = new Date(fechaSelecionada)
+ let diffe = Math.abs(end-star)
+ let min = Math.floor((diffe/1000)/60)
+ if(tickets.TipoVehiculo === 'Camion' && tickets.TipoVehiculo ==='Carro' && tickets.TipoVehiculo === 'Camionetas' && tickets.TipoVehiculo === 'Vans' ){
+  setValor(min * 75)
+ }else{
+  setValor(min * 52)
+ }
+ //  return valorLiquidado
+console.log(fechaSelecionada)
 console.log(star)
-console.log(tickets)
+console.log(valor)
 }
+
 useEffect(()=>{
   getPlaca();
-  // finalizaTiempo();
+  // liquidaTiempo();
 },[])
 
 
@@ -64,39 +82,49 @@ useEffect(()=>{
    <tr>
    <th className="col">Placa</th>
     <th className="col">Puesto</th>
-    <th className="col">vehiculo</th>
+    <th className="col">Vehiculo</th>
     <th className="col">Inicio</th>
     <th className="col">Finalizo</th>
-
+    <th className="col">Valor a pagar</th>
    </tr>
   </thead>
-  <tbody>
-    {tickets &&
-    tickets.map((ticket)=>(
-    <tr key={ticket.id} > 
-     <td>{ticket.placa}</td>
-    <td>{ticket.Puesto}</td>
-    <td>{ticket.TipoVehiculo}</td>
-    <td>{ticket.tiempoInicio}</td>
+  <tbody> 
+
+    {/* {tickets &&
+    tickets.map((ticket)=>(  */}
+    <tr key={tickets._id} > 
+     <td>{tickets.placa}</td>
+    <td>{tickets.Puesto}</td>
+    <td>{tickets.TipoVehiculo}</td>
+    <td>{tickets.tiempoInicio}</td>
         
     <td>
       {/* <label>Fecha</label> */}
       <DateTimePicker value={fechaSelecionada} onChange={setFechaSelecionada} />
     </td>
-
+    <td 
+    // muestraElValor={}
+    >
+      {valor}
+      </td>
     </tr>
     
-    ))}
+     {/* ))}  */}
 
-  </tbody>
+  </tbody> 
   </table>
 </div>
 <div className="container-fluid">
   <div className="row">
     <div className="col-10">
-    <button type="button" onClick={liquidaTiempo} class="btn btn-warning">Finalizar Tiempo</button>
+    <button type="button" 
+    // onClick={finTicket} 
+    class="btn btn-warning">Finalizar Tiempo</button>
     </div>
-    <div className="col-2"><button type="button" class="btn btn-success">Valor a Pagar</button></div>
+    <div className="col-2">
+      <button type="button" onClick={liquidaTiempo} class="btn btn-success">Valor a Pagar
+      </button>
+      </div>
   </div>
 </div>
 </div>
