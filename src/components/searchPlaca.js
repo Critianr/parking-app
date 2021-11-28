@@ -10,9 +10,13 @@ export default function SearchPlaca (){
     TipoVehiculo: '',
     Puesto:Number,
     valorP:Number,
-    tiempoInicio:""
+    tiempoInicio:'',
   });
+  const [dataPun, setDataPun] = useState({
+    tiempoFinal:'',
+    valorP:Number,
 
+  });
   const [fechaSelecionada, setFechaSelecionada] = useState(new Date());
   const [busqueda, setBusqueda] = useState('');
   const [valor, setValor] = useState(0);
@@ -58,7 +62,22 @@ console.log(fechaSelecionada)
 console.log(star)
 console.log(valor)
 }
-
+const finTicket = async()=>{
+  // const updateTicket ={
+  //   fechaSelecionada: tickets.tiempoFinal,
+  //   valor: tickets.valorP
+  // };
+  await axios.put('https://app58.herokuapp.com/api/tickets/placa/' + busqueda , dataPun,fechaSelecionada)
+  .then(res=>{
+    var dataNueva = {
+      tiempoFinal:  fechaSelecionada,
+      valor:  valor
+    }
+    setDataPun(dataNueva)
+  }).catch(error=>{
+    console.log(error);
+  })
+}
 useEffect(()=>{
   getPlaca();
   // liquidaTiempo();
@@ -118,7 +137,7 @@ useEffect(()=>{
   <div className="row">
     <div className="col-10">
     <button type="button" 
-    // onClick={finTicket} 
+    onClick={finTicket} 
     class="btn btn-warning">Finalizar Tiempo</button>
     </div>
     <div className="col-2">
