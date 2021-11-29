@@ -1,6 +1,5 @@
 import React from "react";
 import '../assets/css/footer.css'
-import lp from '../assets/img/lp.png'
 const Footer = () =>{
     return(
         <footer className="footer ">

@@ -1,5 +1,7 @@
 import React from 'react';
-import '../assets/css/header.css'
+import '../assets/css/header.css';
+import {NavLink} from 'react-router-dom';
+
 const Header = () =>{
     return(
       <header className="header">
@@ -7,26 +9,25 @@ const Header = () =>{
   <div className="container-fluid">
 
   <ul className="navbar-nav"> 
-    <li class="nav-item">
-      {/* <a class="nav-link fas fa-address-card" href="#">Hola</a> */}
+    <li className="nav-item">
+    <i className="nav-link fas fa-address-card text-black" href="#"></i>
     </li>
     <li className="nav-item">
-      {/* <a class="nav-link far fa-address-book" href="#">Hola</a> */}
+    <i className="nav-link far fa-bell text-black" href="#"></i>
     </li>
     <li className="nav-item">
       {/* <a class="nav-link fas fa-address-book text-black " href="#"> */}
-        <i className="fas fa-address-book text-black"></i>
+        <i className="nav-link fas fa-address-book text-black"></i>
         {/* </a> */}
     </li>
   </ul>
   
-  <router-link to="/home" className="navbar-brand mx-auto" href="#">
-  {/* <img src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top" /> */}
+  <NavLink to="/index" className="navbar-brand text-black">
     CONTROL PARKING
-  </router-link>
+  </NavLink>
        <ul className="nav navbar-nav ml-auto " >
             <li className="nav-item">
-                <a className="nav-link text-black" href="#">About</a>
+                <strong className="nav-link text-black" >About</strong>
             </li>
         </ul>
   </div>

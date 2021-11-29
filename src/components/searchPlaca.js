@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { DateTimePicker } from "@material-ui/pickers";
+import '../assets/css/busqueda.css';
 
 export default function SearchPlaca (){
 
@@ -45,8 +46,6 @@ const handleChange=e=>{
   
 // }
 
-
-
 const liquidaTiempo = async()=>{
  let star = new Date(tickets.tiempoInicio)
  let end = new Date(fechaSelecionada)
@@ -71,22 +70,18 @@ const finTicket = async()=>{
   .then(res=>{
     var dataNueva = {
       tiempoFinal:  fechaSelecionada,
-      valor:  valor
+      valorP:  valor
     }
     setDataPun(dataNueva)
   }).catch(error=>{
     console.log(error);
   })
 }
-useEffect(()=>{
-  getPlaca();
-  // liquidaTiempo();
-},[])
 
 
   // render(){
     return(
-<div className="container">
+<div className="container busqueda">
   <h1 className="py-5 text-center">Busqueda de Vehiculo</h1>
   <div class="input-group mb-3">
   <input type="text" class="form-control" onChange={handleChange} placeholder="Busqueda por Placa" value={busqueda} />

@@ -2,7 +2,6 @@ import Dashboar from "../components/Dashboar";
 import Header from '../components/header';
 import Footer from '../components/footer'
 import SearchPlaca from "../components/searchPlaca";
-import '../assets/css/busqueda.css';
 import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 // import DateFnsUtils from '@date-io/date-fns/build/date-fns-utils';
 import DateFnsUtils from '@date-io/date-fns/';
