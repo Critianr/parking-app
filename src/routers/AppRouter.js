@@ -19,7 +19,7 @@ export default function AppRouter() {
             <Route path={"/index"} element={<Entrada />}  />
             <Route path={"/busqueda"} element={<SearchVechiculos />} />
             <Route path={"/tickets"} element={<PanelParking />} />
-            <Route path={'*'} element={<NotFound />}> </Route>
+            <Route path={'*'} element={<NotFound />} />
             {/* </Fragment> */}
             {/* </Switch> */}
         </Routes>

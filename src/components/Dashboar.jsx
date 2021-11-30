@@ -13,19 +13,19 @@ const Dashboar = () =>{
     <hr /> 
     <ul className="nav nav-pills flex-column mb-auto">
       <li className="nav-item" >
-        <NavLink exact to="/index" activeClassName="active" className="nav-link text-white text-decoration-none"  aria-current="page">
+        <NavLink to="/index"  className="nav-link text-white text-decoration-none"  aria-current="page">
           <svg className="bi me-2" width="16" height="16"><use href="#home"/></svg>
           Home
         </NavLink>
       </li>
       <li className="nav-item">
-        <NavLink exact to="/Busqueda" activeClassName="active" className="nav-link text-white text-decoration-none" >
+        <NavLink to="/Busqueda"  className="nav-link text-white text-decoration-none" >
           <svg className="bi me-2" width="16" height="16"><use href="#speedometer2"/></svg>
           Gestion de Tickets           
         </NavLink>
       </li>
       <li className="nav-item">
-        <NavLink exact to="/tickets" activeClassName="active"className="nav-link text-white text-decoration-none">
+        <NavLink to="/tickets"  className="nav-link text-white text-decoration-none">
           <svg className="bi me-2" width="16" height="16"><use href="#table"/></svg>
           Tickets Generados
         </NavLink>
